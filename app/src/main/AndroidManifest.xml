@@ -2,14 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.schibsted.sa.detskjer">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".application.DetskjerApplication"
         android:allowBackup="true"
         android:icon="@mipmap/detskjer_logo"
         android:roundIcon="@mipmap/detskjer_logo_round"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.EventList.EventListActivity">
+        <activity android:name=".ui.EventsList.EventsListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
