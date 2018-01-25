@@ -39,7 +39,6 @@ public class EventsListAdapter extends RecyclerView.Adapter<EventsListViewHolder
     }
 
     public void updateEvents(EventsList eventsList) {
-        eventList.clear();
         eventList.addAll(eventsList.eventsList);
 
         notifyDataSetChanged();

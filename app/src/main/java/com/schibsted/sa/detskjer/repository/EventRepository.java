@@ -19,18 +19,17 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EventRepository {
-
     @Inject
     protected EventCalendarApi eventCalendarApi;
+
+    private final MutableLiveData<EventsList> result = new MutableLiveData<>();
 
     public EventRepository(Context context) {
         ((DetskjerApplication)context).getAppComponent().inject(this);
     }
 
-    public LiveData<EventsList> getEvents() {
-        final MutableLiveData<EventsList> result = new MutableLiveData<>();
-
-        eventCalendarApi.getEventsList(BuildConfig.EVENTS_PER_PAGE).enqueue(new Callback<ArrayList<Event>>() {
+    public LiveData<EventsList> getEvents(int page) {
+        eventCalendarApi.getEventsList(BuildConfig.EVENTS_PER_PAGE, page).enqueue(new Callback<ArrayList<Event>>() {
             @Override
             public void onResponse(Call<ArrayList<Event>> call, Response<ArrayList<Event>> response) {
                 if (response.code() != 200) {

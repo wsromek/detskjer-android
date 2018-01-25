@@ -31,6 +31,9 @@ public class EventsListActivity extends AppCompatActivity implements EventsListV
     @Inject
     protected EventsListPresenter presenter;
 
+    @Inject
+    protected EventsListViewScrollListener scrollListener;
+
     public EventsListAdapter eventsListAdapter;
 
     @Override
@@ -46,6 +49,7 @@ public class EventsListActivity extends AppCompatActivity implements EventsListV
         eventsListAdapter = new EventsListAdapter(emptyList, EventsListActivity.this);
         eventsRecyclerView.setAdapter(eventsListAdapter);
         eventsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        eventsRecyclerView.addOnScrollListener(scrollListener);
 
         presenter.setView(this);
         presenter.getEvents();

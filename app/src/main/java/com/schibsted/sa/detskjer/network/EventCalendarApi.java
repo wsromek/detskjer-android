@@ -11,5 +11,5 @@ import retrofit2.http.Query;
 
 public interface EventCalendarApi {
     @GET(BuildConfig.EC_API_EVENTS_ENDPOINT)
-    Call<ArrayList<Event>> getEventsList(@Query("per_page") int quantity);
+    Call<ArrayList<Event>> getEventsList(@Query("per_page") int quantity, @Query("page") int page);
 }

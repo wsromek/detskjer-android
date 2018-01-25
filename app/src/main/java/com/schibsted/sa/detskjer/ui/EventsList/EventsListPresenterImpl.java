@@ -13,6 +13,8 @@ public class EventsListPresenterImpl implements EventsListPresenter {
 
     private EventsListView view;
 
+    private int page = 0;
+
     @Inject
     protected EventRepository eventRepository;
 
@@ -29,7 +31,7 @@ public class EventsListPresenterImpl implements EventsListPresenter {
     public void getEvents() {
         view.showLoading();
 
-        LiveData<EventsList> events = eventRepository.getEvents();
+        LiveData<EventsList> events = eventRepository.getEvents(page++);
 
         events.observeForever(eventsList -> {
             view.showEvents(eventsList);
