@@ -50,6 +50,7 @@ public class EventsListActivity extends AppCompatActivity implements EventsListV
         eventsRecyclerView.setAdapter(eventsListAdapter);
         eventsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventsRecyclerView.addOnScrollListener(scrollListener);
+        eventsRecyclerView.setNestedScrollingEnabled(false);
 
         presenter.setView(this);
         presenter.getEvents();

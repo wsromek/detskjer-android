@@ -36,6 +36,8 @@ public class EventsListAdapter extends RecyclerView.Adapter<EventsListViewHolder
         Event event = eventList.get(position);
 
         holder.getEventNameLabel().setText(event.name);
+        holder.getEventDateLabel().setText("i dag");
+        holder.getEventLocationLabel().setText("Stavanger");
 
         List<GalleryItem> eventImages = event.galleryItems;
         if (eventImages != null) {
