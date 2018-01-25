@@ -7,34 +7,41 @@ import android.view.ViewGroup;
 
 import com.schibsted.sa.detskjer.R;
 import com.schibsted.sa.detskjer.model.Event;
+import com.schibsted.sa.detskjer.model.EventsList;
 
 import java.util.List;
 
-class EventsListAdapter extends RecyclerView.Adapter<EventsListViewHolder> {
+public class EventsListAdapter extends RecyclerView.Adapter<EventsListViewHolder> {
 
     private List<Event> eventList;
-    private Context parentContext;
+    private LayoutInflater inflater;
 
-    EventsListAdapter(List<Event> eventList, Context parentContext) {
+    public EventsListAdapter(List<Event> eventList, Context parentContext) {
         this.eventList = eventList;
-        this.parentContext = parentContext;
+        this.inflater = LayoutInflater.from(parentContext);
     }
 
     @Override
     public EventsListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parentContext);
-        return new EventsListViewHolder(inflater.inflate(R.layout.list_item_event, parent, false));
+        return new EventsListViewHolder(this.inflater.inflate(R.layout.list_item_event, parent, false));
     }
 
     @Override
     public void onBindViewHolder(EventsListViewHolder holder, int position) {
         Event event = eventList.get(position);
-        System.out.println(event.getName());
-        holder.getEventName().setText(event.getName());
+
+        holder.getEventNameLabel().setText(event.name);
     }
 
     @Override
     public int getItemCount() {
         return eventList.size();
+    }
+
+    public void updateEvents(EventsList eventsList) {
+        eventList.clear();
+        eventList.addAll(eventsList.eventsList);
+
+        notifyDataSetChanged();
     }
 }

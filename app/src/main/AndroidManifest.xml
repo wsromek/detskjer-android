@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".application.DetskjerApplication"
+        android:name=".app.DetskjerApplication"
         android:allowBackup="true"
         android:icon="@mipmap/detskjer_logo"
         android:roundIcon="@mipmap/detskjer_logo_round"

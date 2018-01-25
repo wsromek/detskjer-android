@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.schibsted.sa.detskjer.ui.EventsList.EventsListActivity">
+    tools:context=".ui.EventsList.EventsListActivity">
 
     <ProgressBar
         android:id="@+id/activity_event_progressBar"

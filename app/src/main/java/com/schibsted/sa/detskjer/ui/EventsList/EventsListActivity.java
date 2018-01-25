@@ -8,17 +8,30 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.schibsted.sa.detskjer.R;
+import com.schibsted.sa.detskjer.app.DetskjerApplication;
 import com.schibsted.sa.detskjer.model.Event;
 import com.schibsted.sa.detskjer.model.EventsList;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class EventsListActivity extends AppCompatActivity implements EventsListView {
 
-    EventsListPresenter presenter;
-    RecyclerView eventsRecyclerView;
-    ProgressBar progressBar;
+    @BindView(R.id.activity_event_recyclerView)
+    protected RecyclerView eventsRecyclerView;
+
+    @BindView(R.id.activity_event_progressBar)
+    protected ProgressBar progressBar;
+
+    @Inject
+    protected EventsListPresenter presenter;
+
+    public EventsListAdapter eventsListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +40,13 @@ public class EventsListActivity extends AppCompatActivity implements EventsListV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_list);
 
-        //TODO: binding
-        progressBar = findViewById(R.id.activity_event_progressBar);
+        ((DetskjerApplication)getApplication()).getAppComponent().inject(this);
+        ButterKnife.bind(this);
 
-        eventsRecyclerView = findViewById(R.id.activity_event_recyclerView);
-        eventsRecyclerView.setAdapter(new EventsListAdapter(emptyList, EventsListActivity.this));
+        eventsListAdapter = new EventsListAdapter(emptyList, EventsListActivity.this);
+        eventsRecyclerView.setAdapter(eventsListAdapter);
         eventsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        presenter = new EventsListPresenterImpl();
         presenter.setView(this);
         presenter.getEvents();
     }
@@ -50,7 +62,6 @@ public class EventsListActivity extends AppCompatActivity implements EventsListV
     }
 
     public void showEvents(EventsList list) {
-        eventsRecyclerView.setAdapter(new EventsListAdapter(list.getEventsList(), EventsListActivity.this));
-        eventsRecyclerView.getAdapter().notifyDataSetChanged();
+        eventsListAdapter.updateEvents(list);
     }
 }

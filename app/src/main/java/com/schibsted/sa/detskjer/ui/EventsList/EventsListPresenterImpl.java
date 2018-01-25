@@ -1,22 +1,31 @@
 package com.schibsted.sa.detskjer.ui.EventsList;
 
-import com.schibsted.sa.detskjer.application.Constants;
+import android.content.Context;
+
+import com.schibsted.sa.detskjer.BuildConfig;
+import com.schibsted.sa.detskjer.app.DetskjerApplication;
 import com.schibsted.sa.detskjer.model.Event;
 import com.schibsted.sa.detskjer.model.EventsList;
 import com.schibsted.sa.detskjer.network.EventCalendarApi;
 
-import java.util.List;
+import java.util.ArrayList;
+
+import javax.inject.Inject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Converter;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class EventsListPresenterImpl implements EventsListPresenter {
 
     private EventsListView view;
+
+    @Inject
+    protected EventCalendarApi eventCalendarApi;
+
+    public EventsListPresenterImpl(Context context) {
+        ((DetskjerApplication)context).getAppComponent().inject(this);
+    }
 
     @Override
     public void setView(EventsListView view) {
@@ -25,26 +34,17 @@ public class EventsListPresenterImpl implements EventsListPresenter {
 
     @Override
     public void getEvents() {
-        Converter.Factory converter = GsonConverterFactory.create();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.EC_API_BASE_URL)
-                .addConverterFactory(converter)
-                .build();
-
-        EventCalendarApi ecApi = retrofit.create(EventCalendarApi.class);
-
         view.showLoading();
 
-        ecApi.getEventsList(Constants.EVENTS_PER_PAGE).enqueue(new Callback<List<Event>>() {
+        eventCalendarApi.getEventsList(BuildConfig.EVENTS_PER_PAGE).enqueue(new Callback<ArrayList<Event>>() {
             @Override
-            public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
+            public void onResponse(Call<ArrayList<Event>> call, Response<ArrayList<Event>> response) {
                 if (response.code() != 200) {
                     System.out.println("Request failed");
                     System.out.println(response.code());
                     System.out.println(response.message());
                 } else {
-                    List<Event> body = response.body();
+                    ArrayList<Event> body = response.body();
                     EventsList eventsList = new EventsList(body);
 
                     view.showEvents(eventsList);
@@ -53,7 +53,7 @@ public class EventsListPresenterImpl implements EventsListPresenter {
             }
 
             @Override
-            public void onFailure(Call<List<Event>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<Event>> call, Throwable t) {
                 System.out.println("Request failed");
                 System.out.println(t.getMessage());
                 view.hideLoading();
