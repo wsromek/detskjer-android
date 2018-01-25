@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/list_item_event_container"
-    android:orientation="vertical"
-    android:padding="10dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="10dp"
+    android:padding="1dp"
+    android:background="@drawable/list_item_event_background"
+    >
+
+    <ImageView
+        android:id="@+id/list_item_event_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/app_name"
+        app:srcCompat="@mipmap/detskjer_logo" />
 
     <TextView
         android:id="@+id/list_item_event_name"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:fontFamily="@font/lato"
+        android:paddingTop="20dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorNordic"
+        android:textSize="14sp"
         tools:text="Event name" />
 
 </LinearLayout>

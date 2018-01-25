@@ -11,5 +11,13 @@ import retrofit2.http.Query;
 
 public interface EventCalendarApi {
     @GET(BuildConfig.EC_API_EVENTS_ENDPOINT)
-    Call<ArrayList<Event>> getEventsList(@Query("per_page") int quantity, @Query("page") int page);
+    Call<ArrayList<Event>> getEventsList(
+            @Query("per_page") int quantity,
+            @Query("page") int page,
+            @Query("distribution_channel") String distributionChannel,
+            @Query("status") String status,
+            @Query("sort_order") String sortOrder,
+            @Query("sort_column") String sortColumn,
+            @Query("date_from") String dateFrom
+    );
 }

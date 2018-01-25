@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import com.schibsted.sa.detskjer.R;
 import com.schibsted.sa.detskjer.model.Event;
 import com.schibsted.sa.detskjer.model.EventsList;
+import com.schibsted.sa.detskjer.model.GalleryItem;
+import com.schibsted.sa.detskjer.model.Image;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -15,9 +18,11 @@ public class EventsListAdapter extends RecyclerView.Adapter<EventsListViewHolder
 
     private List<Event> eventList;
     private LayoutInflater inflater;
+    private Context eventListContext;
 
     public EventsListAdapter(List<Event> eventList, Context parentContext) {
         this.eventList = eventList;
+        this.eventListContext = parentContext;
         this.inflater = LayoutInflater.from(parentContext);
     }
 
@@ -31,6 +36,20 @@ public class EventsListAdapter extends RecyclerView.Adapter<EventsListViewHolder
         Event event = eventList.get(position);
 
         holder.getEventNameLabel().setText(event.name);
+
+        List<GalleryItem> eventImages = event.galleryItems;
+        if (eventImages != null) {
+            GalleryItem detailImageItem = eventImages.get(0);
+            if (detailImageItem != null) {
+                Image detailImage = detailImageItem.image;
+
+                Picasso.with(this.eventListContext)
+                        .load(detailImage.listImage)
+                        .resize(100, 100)
+                        .centerCrop()
+                        .into(holder.getEventImageView());
+            }
+        }
     }
 
     @Override

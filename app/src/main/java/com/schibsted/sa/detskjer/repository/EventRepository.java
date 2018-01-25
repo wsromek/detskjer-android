@@ -10,7 +10,10 @@ import com.schibsted.sa.detskjer.model.Event;
 import com.schibsted.sa.detskjer.model.EventsList;
 import com.schibsted.sa.detskjer.network.EventCalendarApi;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -25,11 +28,23 @@ public class EventRepository {
     private final MutableLiveData<EventsList> result = new MutableLiveData<>();
 
     public EventRepository(Context context) {
-        ((DetskjerApplication)context).getAppComponent().inject(this);
+        ((DetskjerApplication) context).getAppComponent().inject(this);
     }
 
     public LiveData<EventsList> getEvents(int page) {
-        eventCalendarApi.getEventsList(BuildConfig.EVENTS_PER_PAGE, page).enqueue(new Callback<ArrayList<Event>>() {
+        final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+
+        Call<ArrayList<Event>> methodCall = eventCalendarApi.getEventsList(
+                        BuildConfig.EVENTS_PER_PAGE,
+                        page,
+                        BuildConfig.DISTRIBUTION_CHANNEL,
+                        BuildConfig.STATUS,
+                        BuildConfig.SORT_ORDER,
+                        BuildConfig.SORT_COLUMN,
+                        dateFormat.format(new Date())
+                );
+
+        methodCall.enqueue(new Callback<ArrayList<Event>>() {
             @Override
             public void onResponse(Call<ArrayList<Event>> call, Response<ArrayList<Event>> response) {
                 if (response.code() != 200) {
