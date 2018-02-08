@@ -1,9 +1,11 @@
 package com.schibsted.sa.detskjer.ui.EventsList;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -11,6 +13,7 @@ import com.schibsted.sa.detskjer.R;
 import com.schibsted.sa.detskjer.app.DetskjerApplication;
 import com.schibsted.sa.detskjer.model.Event;
 import com.schibsted.sa.detskjer.model.EventsList;
+import com.schibsted.sa.detskjer.ui.EventDetail.EventDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,21 +50,21 @@ public class EventsListActivity extends AppCompatActivity implements EventsListV
         ButterKnife.bind(this);
 
         eventsListAdapter = new EventsListAdapter(emptyList, EventsListActivity.this);
+
         eventsRecyclerView.setAdapter(eventsListAdapter);
         eventsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventsRecyclerView.addOnScrollListener(scrollListener);
+
         eventsRecyclerView.setNestedScrollingEnabled(false);
 
         presenter.setView(this);
         presenter.getEvents();
     }
 
-    @Override
     public void showLoading() {
         progressBar.setVisibility(View.VISIBLE);
     }
 
-    @Override
     public void hideLoading() {
         progressBar.setVisibility(View.GONE);
     }
