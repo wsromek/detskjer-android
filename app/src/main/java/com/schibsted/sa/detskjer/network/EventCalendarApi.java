@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface EventCalendarApi {
@@ -20,4 +21,7 @@ public interface EventCalendarApi {
             @Query("sort_column") String sortColumn,
             @Query("date_from") String dateFrom
     );
+
+    @GET(BuildConfig.EC_API_EVENT_ENDPOINT)
+    Call<Event> getEvent(@Path("id") String eventId);
 }
