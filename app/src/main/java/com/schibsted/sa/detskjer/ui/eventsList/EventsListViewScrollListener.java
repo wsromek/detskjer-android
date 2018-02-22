@@ -1,4 +1,4 @@
-package com.schibsted.sa.detskjer.ui.EventsList;
+package com.schibsted.sa.detskjer.ui.eventsList;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

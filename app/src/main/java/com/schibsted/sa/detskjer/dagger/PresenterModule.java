@@ -2,10 +2,10 @@ package com.schibsted.sa.detskjer.dagger;
 
 import android.content.Context;
 
-import com.schibsted.sa.detskjer.ui.EventDetail.EventDetailPresenter;
-import com.schibsted.sa.detskjer.ui.EventDetail.EventDetailPresenterImpl;
-import com.schibsted.sa.detskjer.ui.EventsList.EventsListPresenter;
-import com.schibsted.sa.detskjer.ui.EventsList.EventsListPresenterImpl;
+import com.schibsted.sa.detskjer.ui.eventDetail.EventDetailPresenter;
+import com.schibsted.sa.detskjer.ui.eventDetail.EventDetailPresenterImpl;
+import com.schibsted.sa.detskjer.ui.eventsList.EventsListPresenter;
+import com.schibsted.sa.detskjer.ui.eventsList.EventsListPresenterImpl;
 
 import javax.inject.Singleton;
 

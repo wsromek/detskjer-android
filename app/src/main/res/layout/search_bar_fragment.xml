@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_item_event_inner_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/search_bar_date_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        style="?android:attr/buttonBarButtonStyle"
+        android:textColor="@color/colorNordic"
+        android:drawableTop="@drawable/ic_calendar"
+        android:drawablePadding="10dp"
+        android:text="Date" />
+
+    <Button
+        android:id="@+id/search_bar_category_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        style="?android:attr/buttonBarButtonStyle"
+        android:textColor="@color/colorNordic"
+        android:drawableTop="@drawable/ic_categories"
+        android:drawablePadding="10dp"
+        android:text="Category" />
+
+    <Button
+        android:id="@+id/search_bar_text_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        style="?android:attr/buttonBarButtonStyle"
+        android:textColor="@color/colorNordic"
+        android:drawableTop="@drawable/ic_search"
+        android:drawablePadding="10dp"
+        android:text="Search" />
+</LinearLayout>

@@ -1,6 +1,5 @@
-package com.schibsted.sa.detskjer.ui.EventsList;
+package com.schibsted.sa.detskjer.ui.eventsList;
 
-import com.schibsted.sa.detskjer.model.Event;
 import com.schibsted.sa.detskjer.model.EventsList;
 
 public interface EventsListView {

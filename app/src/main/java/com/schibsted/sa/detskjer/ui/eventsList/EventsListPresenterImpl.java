@@ -1,11 +1,15 @@
-package com.schibsted.sa.detskjer.ui.EventsList;
+package com.schibsted.sa.detskjer.ui.eventsList;
 
 import android.arch.lifecycle.LiveData;
 import android.content.Context;
+import android.util.Log;
 
 import com.schibsted.sa.detskjer.app.DetskjerApplication;
 import com.schibsted.sa.detskjer.model.EventsList;
 import com.schibsted.sa.detskjer.repository.EventRepository;
+
+import java.util.Date;
+import java.util.Observer;
 
 import javax.inject.Inject;
 
@@ -25,6 +29,11 @@ public class EventsListPresenterImpl implements EventsListPresenter {
     @Override
     public void setView(EventsListView view) {
         this.view = view;
+    }
+
+    @Override
+    public void getEventsByDate(Date date) {
+        Log.d("SEARCH", date.toString());
     }
 
     @Override

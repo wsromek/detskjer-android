@@ -1,4 +1,4 @@
-package com.schibsted.sa.detskjer.ui.EventDetail;
+package com.schibsted.sa.detskjer.ui.eventDetail;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;

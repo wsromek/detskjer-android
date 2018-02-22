@@ -1,10 +1,10 @@
-package com.schibsted.sa.detskjer.ui.Splashscreen;
+package com.schibsted.sa.detskjer.ui.splashscreen;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.schibsted.sa.detskjer.ui.EventsList.EventsListActivity;
+import com.schibsted.sa.detskjer.ui.eventsList.EventsListActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

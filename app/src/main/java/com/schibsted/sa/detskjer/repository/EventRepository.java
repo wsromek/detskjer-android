@@ -3,12 +3,14 @@ package com.schibsted.sa.detskjer.repository;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
+import android.util.Log;
 
 import com.schibsted.sa.detskjer.BuildConfig;
 import com.schibsted.sa.detskjer.app.DetskjerApplication;
 import com.schibsted.sa.detskjer.model.Event;
 import com.schibsted.sa.detskjer.model.EventsList;
 import com.schibsted.sa.detskjer.network.EventCalendarApi;
+import com.schibsted.sa.detskjer.ui.searchBarFragment.EcApiUrlHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

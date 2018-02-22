@@ -1,31 +1,13 @@
-package com.schibsted.sa.detskjer.ui.EventDetail;
+package com.schibsted.sa.detskjer.ui.eventDetail;
 
 import android.arch.lifecycle.LiveData;
 import android.content.Context;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.schibsted.sa.detskjer.R;
 import com.schibsted.sa.detskjer.app.DetskjerApplication;
 import com.schibsted.sa.detskjer.model.Event;
-import com.schibsted.sa.detskjer.model.GalleryItem;
-import com.schibsted.sa.detskjer.model.Image;
 import com.schibsted.sa.detskjer.repository.EventRepository;
-import com.squareup.picasso.Picasso;
-
-import java.util.List;
 
 import javax.inject.Inject;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class EventDetailPresenterImpl implements EventDetailPresenter {
 

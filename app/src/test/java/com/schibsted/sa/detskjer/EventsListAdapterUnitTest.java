@@ -1,7 +1,6 @@
 package com.schibsted.sa.detskjer;
 
 import android.content.Context;
-import android.test.mock.MockContext;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +10,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.schibsted.sa.detskjer.model.Event;
 import com.schibsted.sa.detskjer.model.EventsList;
-import com.schibsted.sa.detskjer.ui.EventsList.EventsListAdapter;
+import com.schibsted.sa.detskjer.ui.eventsList.EventsListAdapter;
 
 import java.util.ArrayList;
 

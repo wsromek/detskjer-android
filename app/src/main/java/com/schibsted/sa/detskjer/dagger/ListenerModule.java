@@ -2,7 +2,7 @@ package com.schibsted.sa.detskjer.dagger;
 
 import android.content.Context;
 
-import com.schibsted.sa.detskjer.ui.EventsList.EventsListViewScrollListener;
+import com.schibsted.sa.detskjer.ui.eventsList.EventsListViewScrollListener;
 
 import javax.inject.Singleton;
 

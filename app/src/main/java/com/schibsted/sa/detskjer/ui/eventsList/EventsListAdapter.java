@@ -1,9 +1,8 @@
-package com.schibsted.sa.detskjer.ui.EventsList;
+package com.schibsted.sa.detskjer.ui.eventsList;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -11,7 +10,7 @@ import com.schibsted.sa.detskjer.R;
 import com.schibsted.sa.detskjer.model.Event;
 import com.schibsted.sa.detskjer.model.EventsList;
 import com.schibsted.sa.detskjer.model.Place;
-import com.schibsted.sa.detskjer.ui.EventDetail.EventDetailActivity;
+import com.schibsted.sa.detskjer.ui.eventDetail.EventDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -37,7 +36,7 @@ public class EventsListAdapter extends RecyclerView.Adapter<EventsListViewHolder
     public void onBindViewHolder(EventsListViewHolder holder, int position) {
         Event event = eventList.get(position);
 
-        holder.getContainer().setOnClickListener(view -> {
+        holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(this.eventListContext, EventDetailActivity.class);
             intent.putExtra(Event.EVENT_ID, event.id);
             this.eventListContext.startActivity(intent);

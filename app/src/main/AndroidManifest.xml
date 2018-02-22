@@ -17,7 +17,7 @@
             android:value="@string/google_maps_key"/>
 
         <activity
-            android:name=".ui.EventsList.EventsListActivity"
+            android:name=".ui.eventsList.EventsListActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             >
             <intent-filter>
@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.Splashscreen.SplashActivity"
+            android:name=".ui.splashscreen.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,9 +35,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.EventDetail.EventDetailActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            ></activity>
+            android:name=".ui.eventDetail.EventDetailActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

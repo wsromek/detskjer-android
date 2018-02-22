@@ -1,11 +1,9 @@
-package com.schibsted.sa.detskjer.ui.EventsList;
+package com.schibsted.sa.detskjer.ui.eventsList;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -13,7 +11,7 @@ import com.schibsted.sa.detskjer.R;
 import com.schibsted.sa.detskjer.app.DetskjerApplication;
 import com.schibsted.sa.detskjer.model.Event;
 import com.schibsted.sa.detskjer.model.EventsList;
-import com.schibsted.sa.detskjer.ui.EventDetail.EventDetailActivity;
+import com.schibsted.sa.detskjer.ui.searchBarFragment.EcApiUrlHelper;
 
 import java.util.ArrayList;
 import java.util.List;
